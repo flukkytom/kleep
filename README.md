@@ -5,6 +5,7 @@
 Kleep lets you easily upload or download YouTube videos, automatically find the most viral moments, generate captions, and produce ready-to-post clips with styled subtitles. Built using Flask, yt-dlp, Whisper AI, MoviePy, and ffmpeg.
 
 ---
+![Alt text](https://drive.google.com/uc?export=view&id=1nhMpDiZ6gWpx3WAIFvWnnNbDejjhtncY)
 
 ## 🛠️ Features
 - Upload a video file or paste a YouTube URL.
