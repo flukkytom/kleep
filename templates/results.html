@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kleep - Review Highlight kleeps for - {{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    </head>
+    <body class="results-page">
+        {% include 'header.html' %}
+    
+        <div class="container">
+            {% if video_path and clips|length == 0 %}
+            <h1>Your Video Kleep is here 👉<br /> "{{ real_title }}"</h1>
+                <a href="{{ url_for('static', filename=video_path.split('static/')[-1]) }}" download>Download Video</a><br><br>
+        
+                <video controls width="400">
+                    <source src="{{ url_for('static', filename=video_path.split('static/')[-1]) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% elif clips %}
+                {% for clip in clips %}
+                    {% if clip and clip['project_folder'] and clip['clip_file'] %}
+                    <h1>Your Kleeps are here 👉<br /> "{{ real_title }}"</h1>
+                    <div class="clip-container">
+                        <div class="clip-flex">
+                            
+                            <!-- Video on the left -->
+                            <div class="clip-video">
+                                <video controls width="300" src="{{ url_for('static', filename='clips/' + clip['project_folder'] + '/' + clip['clip_file']) }}?v={{ loop.index }}">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <br>
+                                <a href="{{ url_for('static', filename='clips/' + clip['project_folder'] + '/' + clip['clip_file']) }}" download class="button">📥 Download Your Kleep</a>
+                            </div>
+
+                            <!-- Information on the right -->
+                            <div class="clip-info">
+                                <p><strong>🔥 Viral Score:</strong> {{ clip['viral_score'] }}/100</p>
+                                <p><strong>🧠 Why:</strong> {{ clip['reason'] }}</p>
+                                <p><strong>⏱️ Time:</strong> {{ clip['start'] }}s - {{ clip['end'] }}s</p>
+
+                                <div class="clip-transcript">
+                                    <p><strong>📝 Transcript:</strong> <br />{{ clip['caption_text'] }}</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>No video found.</p>
+            {% endif %}
+
+        </div>
+    
+        
+        {% include 'footer.html' %}
+    </body>
+    
+      
+</html>

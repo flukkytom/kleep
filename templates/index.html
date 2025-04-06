@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Kleep - Turn your Videos into Viral Online Clips</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    </head>
+    <body class="index-page">
+
+
+        {% include 'header.html' %}
+      
+        <div class="container">
+            <h1>Viral Moments From Your Video 🎬</h1>
+      
+            <form id="upload-form" action="/process" method="post" enctype="multipart/form-data" class="form-area">
+    
+                <div class="input-group">
+                    <label for="url">Paste YouTube URL:</label>
+                    <input type="text" id="url" name="url" placeholder="https://youtube.com/watch?v=..." class="input-field">
+                </div>
+            
+                <div class="divider">or</div>
+            
+                <div class="input-group">
+                    <label for="video_file">Upload a Video File:</label>
+                    <input type="file" id="video_file" name="video_file" accept="video/*" class="input-field">
+                </div>
+                <br />
+                <div class="input-group">
+                    <input type="checkbox" id="just_download" name="just_download">
+                    <label for="just_download">Just download the full video (no AI magic)</label>
+                </div>
+                <hr /><br />
+            
+                <div class="input-group">
+                    <label for="caption_style">Caption Style:</label>
+                    <select id="caption_style" name="caption_style" class="select-field">
+                        <option value="professional" selected>Professional</option>
+                        <option value="fun">Fun</option>
+                        <option value="minimal">Minimal</option>
+                        <option value="red_alert">Red Alert</option>
+                    </select>
+                </div>
+                <br />
+                <div class="input-group">
+                    <label for="burn_captions">Burn Captions?</label>
+                    <select id="burn_captions" name="burn_captions" class="select-field">
+                        <option value="yes" selected>Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                
+                <br />
+                <div class="submit-btn">
+                    <button type="submit" class="primary-button">Process Video 🚀</button>
+                </div>
+            
+            </form>
+            
+      
+            <div id="progress-bar" class="progress-bar" style="display:none;">
+                <p>Uploading... Please wait ⏳</p>
+            </div>
+      
+        </div>
+      
+        <script>
+            document.getElementById('upload-form').addEventListener('submit', function(event) {
+                document.getElementById('progress-bar').style.display = 'block';
+            });
+          
+            // Show/hide style options based on caption choice
+            document.getElementById('burn_captions').addEventListener('change', function() {
+              const styleOptions = document.getElementById('style-options');
+              if (this.value === 'yes') {
+                styleOptions.style.display = 'block';
+              } else {
+                styleOptions.style.display = 'none';
+              }
+            });
+          </script>
+          
+      
+      {% include 'footer.html' %}
+      </body>
+      
+</html>

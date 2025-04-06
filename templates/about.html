@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Kleep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="about-page">
+
+    {% include 'header.html' %}
+    <div class="container">
+        <h1>About Kleep</h1>
+
+        <p>
+            Kleep was built to help creators, educators, and entrepreneurs easily turn long-form videos into viral-ready short clips.
+        </p>
+
+        <p>
+            Using smart AI analysis, Kleep finds the **most powerful moments** in your videos — 
+            then automatically kleeps (clips) and formats them for TikTok, Instagram, YouTube Shorts, and more.
+        </p>
+
+        <p>
+            Whether you're uploading a fresh video or dropping a YouTube link, Kleep saves you hours of manual editing.
+            <br><br>
+            It's time to let your best moments shine ✨.
+        </p>
+
+        <div style="margin-top: 30px;">
+            <a href="/" class="button">Get Started</a>
+        </div>
+
+    </div>
+    {% include 'footer.html' %}
+
+</body>
+</html>
