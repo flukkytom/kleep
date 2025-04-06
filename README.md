@@ -67,7 +67,7 @@ Then visit [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
 ## 🔎 Project Structure
 ```bash
-veedio/
+kleep/
 🔍 app.py (Flask app + routes)
 📂 video_utils.py (Video download, clip, transcribe, caption)
 📂 helper.py (sanitize, text manipulation)
